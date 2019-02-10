@@ -1,9 +1,10 @@
-package com.raiachat
+package com.raiachat.activities
 
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import com.raiachat.R
 
 class LoginActivity : AppCompatActivity() {
 
