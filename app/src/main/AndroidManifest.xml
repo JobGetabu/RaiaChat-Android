@@ -16,7 +16,7 @@
             android:value="bd67bf129c485e4f45930b61a67e4b8b08359675"
             />
 
-        <activity android:name=".LoginActivity"
+        <activity android:name=".activities.LoginActivity"
             android:theme="@style/AppTheme.TransparentTheme">
             <intent-filter>
 
