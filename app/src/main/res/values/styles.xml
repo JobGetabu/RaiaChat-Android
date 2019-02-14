@@ -11,6 +11,8 @@
     <style name="AppTheme.TransparentTheme">
         <item name="android:windowDrawsSystemBarBackgrounds" tools:targetApi="lollipop">true</item>
         <item name="android:statusBarColor" tools:targetApi="lollipop">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
+        <item name="windowActionBarOverlay">true</item>
     </style>
 
     <style name="ToolBarStyle" parent="ToolBarStyle.Base"/>

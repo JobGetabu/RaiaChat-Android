@@ -12,27 +12,30 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.snackbar.Snackbar
+import com.raiachat.R
 
 
 inline fun Context.toast(message: String, duration: Int = Toast.LENGTH_SHORT): Toast = Toast
-        .makeText(this, message, duration)
-        .apply {
-            show()
-        }
+    .makeText(this, message, duration)
+    .apply {
+        show()
+    }
 
 fun ImageView.loadUrl(url: Int) {
     Glide.with(context)
-            .load(url)
-            .thumbnail(0.05f)
-            .into(this)
+        .load(url)
+        .thumbnail(0.05f)
+        .into(this)
 }
 
 fun ImageView.loadUrl(url: String) {
     Glide.with(context)
-            .load(url)
-            .thumbnail(0.05f)
-            .into(this)
+        .load(url)
+        .apply(RequestOptions().placeholder(R.drawable.avatar_placeholder))
+        .thumbnail(0.05f)
+        .into(this)
 }
 
 fun TextView.setFont(font: String) {
@@ -101,5 +104,5 @@ class SquareLayout : RelativeLayout {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, widthMeasureSpec)
     }
-
 }
+

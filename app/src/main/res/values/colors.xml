@@ -9,4 +9,7 @@
     <color name="card_bck">#F1F0F5</color>
     <color name="grey_light">#8D8C91</color>
     <color name="error_light">#E53568</color>
+
+    <color name="material_drawer_header_selection_text">#FFFFFF</color>
+    <color name="material_drawer_header_selection_subtext">#F9F9F9</color>
 </resources>

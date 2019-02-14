@@ -96,6 +96,10 @@ dependencies {
     implementation 'com.github.kizitonwose.time:time-android:1.0.2'
     //drawer
     implementation 'co.zsmb:materialdrawer-kt:2.0.1'
+    //lottie
+    implementation 'com.airbnb.android:lottie:2.8.0'
+    //circle_image
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
 
     // ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
