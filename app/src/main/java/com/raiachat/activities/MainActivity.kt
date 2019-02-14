@@ -6,7 +6,14 @@ import android.transition.Explode
 import android.view.View
 import android.view.Window.FEATURE_CONTENT_TRANSITIONS
 import android.view.WindowManager
+import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
 import co.zsmb.materialdrawerkt.builders.accountHeader
 import co.zsmb.materialdrawerkt.builders.drawer
 import co.zsmb.materialdrawerkt.draweritems.badgeable.primaryItem
@@ -17,7 +24,6 @@ import com.mikepenz.materialdrawer.AccountHeader
 import com.mikepenz.materialdrawer.Drawer
 import com.raiachat.R
 import com.raiachat.fragments.HomeFragment
-import com.raiachat.util.inTransaction
 import com.raiachat.util.toast
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -26,6 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var result: Drawer
     private lateinit var headerResult: AccountHeader
+    private lateinit var appBarConfiguration : AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,15 +42,46 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
+        val host: NavHostFragment = navHostFrag as NavHostFragment? ?: return
+
+        // Set up Action Bar
+        val navController = host.navController
+
         val homeFragment = HomeFragment()
 
-        supportFragmentManager.inTransaction {
+        /*supportFragmentManager.inTransaction {
             add(com.raiachat.R.id.bodyContent, homeFragment)
-        }
+        }*/
 
         initDrawer(savedInstanceState)
 
     }
+
+    private fun setUpNav(host: NavHostFragment){
+        appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.home_dest, R.id.profile_dest, R.id.settings_dest, R.id.trending_dest),
+            result.drawerLayout )
+
+        setupActionBar(host.navController , appBarConfiguration)
+    }
+
+    private fun setupActionBar(navController: NavController,
+                               appBarConfig : AppBarConfiguration) {
+        // TODO STEP 9.6 - Have NavigationUI handle what your ActionBar displays
+        // This allows NavigationUI to decide what label to show in the action bar
+        // By using appBarConfig, it will also determine whether to
+        // show the up arrow or drawer menu icon
+        setupActionBarWithNavController(navController, appBarConfig)
+        // TODO END STEP 9.6
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        // Allows NavigationUI to support proper up navigation or the drawer layout
+        // drawer menu, depending on the situation
+        return findNavController(R.id.navHostFrag).navigateUp(appBarConfiguration)
+    }
+
+
 
     private fun makeTransparent() {
         with(window) {
@@ -106,12 +144,13 @@ class MainActivity : AppCompatActivity() {
 
             primaryItem("Home") {
                 icon = com.raiachat.R.drawable.ic_home_grey
-                onClick(doToast("Home"))
+                onClick(doNav(R.id.home_dest))
+
             }
 
             primaryItem("Profile") {
                 icon = com.raiachat.R.drawable.ic_person
-                onClick(doToast("Profile"))
+                onClick(doNav(R.id.profile_dest))
             }
 
             primaryItem("Notification") {
@@ -121,7 +160,7 @@ class MainActivity : AppCompatActivity() {
 
             primaryItem("Trending") {
                 icon = com.raiachat.R.drawable.ic_ratings
-                onClick(doToast("Trending"))
+                onClick(doNav(R.id.trending_dest))
             }
 
             sectionHeader("Manage") {
@@ -130,7 +169,7 @@ class MainActivity : AppCompatActivity() {
 
             primaryItem("Settings") {
                 icon = com.raiachat.R.drawable.ic_settings
-                onClick(doToast("Settings"))
+                onClick(doNav(R.id.settings_dest))
             }
 
             primaryItem("Help") {
@@ -156,6 +195,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun doToast(txt: String): (View?) -> Boolean = {
         toast(txt)
+        false
+    }
+
+    private fun doNav(@IdRes int: Int): (View?) -> Boolean ={
+        //Navigation.createNavigateOnClickListener(int, null)
+        findNavController(R.id.navHostFrag).navigate(int)
         false
     }
 }

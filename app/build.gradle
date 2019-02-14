@@ -67,7 +67,7 @@ android {
 
 dependencies {
 
-    def navigationVersion = "1.0.0-alpha06"
+    def navigationVersion = "1.0.0-alpha08"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

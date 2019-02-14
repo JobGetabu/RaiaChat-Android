@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.widget.ImageView;
+import androidx.appcompat.app.AppCompatDelegate;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.mikepenz.iconics.IconicsDrawable;
@@ -15,6 +16,12 @@ import com.raiachat.R;
 import io.fabric.sdk.android.Fabric;
 
 public class RaiaChat extends Application {
+
+    //this works < 19
+    static {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
