@@ -28,6 +28,7 @@
         <activity
             android:name=".activities.LoginActivity"
             android:theme="@style/AppTheme.TransparentTheme"/>
+        <activity android:name=".activities.NotifActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
