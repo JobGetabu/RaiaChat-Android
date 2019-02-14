@@ -2,8 +2,10 @@ package com.raiachat.activities
 
 import android.os.Build
 import android.os.Bundle
+import android.transition.Explode
 import android.view.View
-import android.view.Window
+import android.view.Window.FEATURE_CONTENT_TRANSITIONS
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import co.zsmb.materialdrawerkt.builders.accountHeader
 import co.zsmb.materialdrawerkt.builders.drawer
@@ -28,23 +30,48 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // remove title
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
-
         // Making notification bar transparent
-        if (Build.VERSION.SDK_INT >= 21) {
-            window.decorView.systemUiVisibility =
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-        }
+        makeTransparent()
+
         setContentView(R.layout.activity_main)
 
-        val homeFragment: HomeFragment = HomeFragment()
+        val homeFragment = HomeFragment()
 
         supportFragmentManager.inTransaction {
             add(com.raiachat.R.id.bodyContent, homeFragment)
         }
 
         initDrawer(savedInstanceState)
+
+    }
+
+    private fun makeTransparent() {
+        with(window) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                requestFeature(FEATURE_CONTENT_TRANSITIONS)
+                // set an exit transition
+                exitTransition = Explode()
+                enterTransition = Explode()
+            }
+        }
+
+        val winParams = window.attributes
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            winParams.flags = winParams.flags and WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS.inv()
+
+        }
+        window.attributes = winParams
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+
+        window.decorView.apply {
+            // Hide both the navigation bar and the status bar.
+            // SYSTEM_UI_FLAG_FULLSCREEN is only available on Android 4.1 and higher, but as
+            // a general rule, you should design your app to hide the status bar whenever you
+            // hide the navigation bar.
+            systemUiVisibility =
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_FULLSCREEN or View.SYSTEM_UI_FLAG_LOW_PROFILE
+        }
+
     }
 
     override fun onBackPressed() {
@@ -62,7 +89,7 @@ class MainActivity : AppCompatActivity() {
             showOnFirstLaunch = true
 
             headerResult = accountHeader {
-                background = R.drawable.header
+                background = com.raiachat.R.drawable.header
                 savedInstance = savedInstanceState
                 translucentStatusBar = true
 
@@ -78,22 +105,22 @@ class MainActivity : AppCompatActivity() {
             }
 
             primaryItem("Home") {
-                icon = R.drawable.ic_home_grey
+                icon = com.raiachat.R.drawable.ic_home_grey
                 onClick(doToast("Home"))
             }
 
             primaryItem("Profile") {
-                icon = R.drawable.ic_person
+                icon = com.raiachat.R.drawable.ic_person
                 onClick(doToast("Profile"))
             }
 
             primaryItem("Notification") {
-                icon = R.drawable.ic_notification
+                icon = com.raiachat.R.drawable.ic_notification
                 onClick(doToast("Notification"))
             }
 
             primaryItem("Trending") {
-                icon = R.drawable.ic_ratings
+                icon = com.raiachat.R.drawable.ic_ratings
                 onClick(doToast("Trending"))
             }
 
@@ -102,26 +129,28 @@ class MainActivity : AppCompatActivity() {
             }
 
             primaryItem("Settings") {
-                icon = R.drawable.ic_settings
+                icon = com.raiachat.R.drawable.ic_settings
                 onClick(doToast("Settings"))
             }
 
             primaryItem("Help") {
-                icon = R.drawable.ic_help
+                icon = com.raiachat.R.drawable.ic_help
                 onClick(doToast("Help"))
             }
 
             primaryItem("Contact") {
-                icon = R.drawable.ic_phone
+                icon = com.raiachat.R.drawable.ic_phone
                 onClick(doToast("Contact"))
             }
 
             divider()
 
             primaryItem("Logout") {
-                icon = R.drawable.ic_leave
+                icon = com.raiachat.R.drawable.ic_leave
                 onClick(doToast("Logout"))
             }
+
+
         }
     }
 
