@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -16,11 +16,12 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="62dp"
         android:background="@android:color/transparent"
-        android:contentDescription="@string/content_decription"
+        android:contentDescription="@string/image_default_content_description"
         android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+        android:layout_marginLeft="32dp" />
 
     <TextView
         android:id="@+id/textView4"
@@ -30,9 +31,9 @@
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/nunito_semibold"
+        android:fontFamily="@font/poppins_semibold"
         android:text="My Notifications"
-        android:textColor="@color/white"
+        android:textColor="#FFFFFF"
         android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@id/ce_list"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ce2_imgBtnClose"
         />
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ce_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -58,4 +59,4 @@
         android:paddingBottom="16dp"
         />
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

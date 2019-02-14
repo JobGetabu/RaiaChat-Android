@@ -2,13 +2,21 @@
 <resources>
     <color name="colorPrimary">#5B72DF</color>
     <color name="colorPrimaryDark">#1747AC</color>
-    <color name="colorAccent">#17E7D6</color>
+    <color name="colorAccent">#0C756D</color>
+
+    <color name="accentLight">#330C756D</color>
 
     <color name="milkWhite">#F9F9F9</color>
     <color name="contentDividerLine">#e0e0e0</color>
     <color name="card_bck">#F1F0F5</color>
     <color name="grey_light">#8D8C91</color>
     <color name="error_light">#E53568</color>
+
+    <color name="semitransparent">#64696969</color>
+    <color name="semitransparent_darker">#a0696969</color>
+    <color name="bg_trans">#c8000000</color>
+    <color name="bg_trans2">#96000000</color>
+    <color name="blue">#3F51B5</color>
 
     <color name="material_drawer_header_selection_text">#FFFFFF</color>
     <color name="material_drawer_header_selection_subtext">#F9F9F9</color>

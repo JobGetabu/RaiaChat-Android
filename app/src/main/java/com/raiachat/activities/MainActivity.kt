@@ -1,5 +1,7 @@
 package com.raiachat.activities
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.transition.Explode
@@ -26,6 +28,7 @@ import com.raiachat.R
 import com.raiachat.fragments.HomeFragment
 import com.raiachat.util.toast
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.reflect.KClass
 
 
 class MainActivity : AppCompatActivity() {
@@ -155,7 +158,7 @@ class MainActivity : AppCompatActivity() {
 
             primaryItem("Notification") {
                 icon = com.raiachat.R.drawable.ic_notification
-                onClick(doToast("Notification"))
+                onClick(openActivity(NotifActivity::class))
             }
 
             primaryItem("Trending") {
@@ -174,19 +177,19 @@ class MainActivity : AppCompatActivity() {
 
             primaryItem("Help") {
                 icon = com.raiachat.R.drawable.ic_help
-                onClick(doToast("Help"))
+                onClick(doNav(R.id.help_dest))
             }
 
             primaryItem("Contact") {
                 icon = com.raiachat.R.drawable.ic_phone
-                onClick(doToast("Contact"))
+                onClick(doToast("TODO: Contact"))
             }
 
             divider()
 
             primaryItem("Logout") {
                 icon = com.raiachat.R.drawable.ic_leave
-                onClick(doToast("Logout"))
+                onClick(doToast("TODO: Logout"))
             }
 
 
@@ -201,6 +204,11 @@ class MainActivity : AppCompatActivity() {
     private fun doNav(@IdRes int: Int): (View?) -> Boolean ={
         //Navigation.createNavigateOnClickListener(int, null)
         findNavController(R.id.navHostFrag).navigate(int)
+        false
+    }
+
+    private fun <T : Activity> openActivity(activity: KClass<T>): (View?) -> Boolean = {
+        startActivity(Intent(this@MainActivity, activity.java))
         false
     }
 }
