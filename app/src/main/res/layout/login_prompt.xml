@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/milkWhite"
+    android:id="@+id/ce_emptynotif"
+    >
+
+    <ImageButton
+        android:id="@+id/loginPromptCloseIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="62dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/image_default_content_description"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+        android:layout_marginLeft="32dp" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profile_image"
+        android:layout_width="0dp"
+        android:layout_height="230dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginPromptCloseIcon"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/everyday" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/loginPromptFb"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:paddingStart="40dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="40dp"
+        android:paddingBottom="8dp"
+        android:text="Continue with Facebook"
+        android:textAllCaps="false"
+        app:backgroundTint="#384A87"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="Login to save and track your reports"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/loginPromptGoogle"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingStart="40dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="40dp"
+        android:paddingBottom="8dp"
+        android:text="Continue with Google"
+        android:textColor="@android:color/black"
+        app:backgroundTint="@color/g_white"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="@+id/loginPromptFb"
+        app:layout_constraintStart_toStartOf="@+id/loginPromptFb"
+        app:layout_constraintTop_toBottomOf="@+id/loginPromptFb" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/loginPromptPhone"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingStart="40dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="40dp"
+        android:paddingBottom="8dp"
+        android:text="Continue with Phone"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="@+id/loginPromptFb"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/loginPromptFb"
+        app:layout_constraintTop_toBottomOf="@+id/loginPromptGoogle" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/loginPromptDismiss"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/dismiss"
+        android:textColor="@color/grey_light"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
