@@ -13,6 +13,9 @@
     <string name="no_notification">You don\'t have notification</string>
     <string name="dismiss">Dismiss</string>
 
+    <string name="help_site_url">https://tutorialwing.com</string>
+
+
     <!-- Date Util -->
     <string name="date_util_term_less">less than</string>
     <string name="date_util_term_a">a</string>
