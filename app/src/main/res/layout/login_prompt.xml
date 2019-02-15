@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/milkWhite"
     android:id="@+id/ce_emptynotif"
+    tools:context=".activities.PromptLoginActivity"
     >
 
     <ImageButton
@@ -14,14 +15,14 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="62dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="24dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/image_default_content_description"
         android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
-        android:layout_marginLeft="32dp" />
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 
     <com.airbnb.lottie.LottieAnimationView
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -44,6 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:paddingStart="40dp"
         android:paddingTop="8dp"
