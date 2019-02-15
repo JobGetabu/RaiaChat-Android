@@ -1,12 +1,16 @@
 package com.raiachat.fragments
 
 
-import androidx.fragment.app.Fragment
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.raiachat.R
+import kotlinx.android.synthetic.main.fragment_settings.*
+import kotlin.reflect.KClass
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,5 +31,18 @@ class SettingsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_settings, container, false)
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        settings_about.setOnClickListener {
+
+            openActivity(AboutActivity::class)
+
+        }
+    }
+
+    private fun <T : Activity> openActivity(activity: KClass<T>) {
+        context!!.startActivity(Intent(context, activity.java))
+    }
 
 }
