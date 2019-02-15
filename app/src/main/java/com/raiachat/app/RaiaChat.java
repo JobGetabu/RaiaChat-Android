@@ -1,11 +1,12 @@
 package com.raiachat.app;
 
-import android.app.Application;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.multidex.MultiDex;
+import androidx.multidex.MultiDexApplication;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.mikepenz.iconics.IconicsDrawable;
@@ -15,7 +16,7 @@ import com.mikepenz.materialdrawer.util.DrawerUIUtils;
 import com.raiachat.R;
 import io.fabric.sdk.android.Fabric;
 
-public class RaiaChat extends Application {
+public class RaiaChat extends MultiDexApplication {
 
     //this works < 19
     static {
@@ -27,6 +28,12 @@ public class RaiaChat extends Application {
         super.onCreate();
         Fabric.with(this);
         loadImageInDrawer();
+    }
+
+    @Override
+    protected void attachBaseContext(Context context) {
+        super.attachBaseContext(context);
+        MultiDex.install(this);
     }
 
     private void loadImageInDrawer(){
