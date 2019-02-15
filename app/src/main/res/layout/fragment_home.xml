@@ -25,16 +25,16 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_scrollFlags="scroll|enterAlways"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="8dp"
+                app:layout_scrollFlags="scroll|enterAlways">
 
                 <ImageView
-                    app:layout_collapseMode="parallax"
                     android:id="@+id/imageView"
                     android:layout_width="0dp"
                     android:layout_height="180dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/nairobi"
+                    app:layout_collapseMode="parallax"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -434,17 +434,9 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:lineSpacingExtra="8dp"
-            android:text="aaaaaaaaaaaaa"
-            android:padding="16dp"
-            />
+        <include layout="@layout/dummy_homelist" />
     </androidx.core.widget.NestedScrollView>
 
 
