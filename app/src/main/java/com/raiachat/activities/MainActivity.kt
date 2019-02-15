@@ -3,12 +3,14 @@ package com.raiachat.activities
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.transition.Explode
 import android.view.View
 import android.view.Window.FEATURE_CONTENT_TRANSITIONS
 import android.view.WindowManager
+import android.widget.TextView
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -35,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var result: Drawer
     private lateinit var headerResult: AccountHeader
-    private lateinit var appBarConfiguration : AppBarConfiguration
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,31 +45,42 @@ class MainActivity : AppCompatActivity() {
         // Making notification bar transparent
         makeTransparent()
 
-        setContentView(R.layout.activity_main)
+        setContentView(com.raiachat.R.layout.activity_main)
+        setSupportActionBar(maintoolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        maintoolbar.title = null
+
 
         val host: NavHostFragment = navHostFrag as NavHostFragment? ?: return
 
         // Set up Action Bar
-        val navController = host.navController
-
-        /*supportFragmentManager.inTransaction {
-            add(com.raiachat.R.id.bodyContent, homeFragment)
-        }*/
+        //val navController = host.navController
 
         initDrawer(savedInstanceState)
 
+
+        //setUpNav(host)
+
     }
 
-    private fun setUpNav(host: NavHostFragment){
+    private fun setUpNav(host: NavHostFragment) {
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.home_dest, R.id.profile_dest, R.id.settings_dest, R.id.trending_dest),
-            result.drawerLayout )
+            setOf(
+                com.raiachat.R.id.home_dest,
+                com.raiachat.R.id.profile_dest,
+                com.raiachat.R.id.settings_dest,
+                com.raiachat.R.id.trending_dest
+            ),
+            result.drawerLayout
+        )
 
-        setupActionBar(host.navController , appBarConfiguration)
+        setupActionBar(host.navController, appBarConfiguration)
     }
 
-    private fun setupActionBar(navController: NavController,
-                               appBarConfig : AppBarConfiguration) {
+    private fun setupActionBar(
+        navController: NavController,
+        appBarConfig: AppBarConfiguration
+    ) {
         // TODO STEP 9.6 - Have NavigationUI handle what your ActionBar displays
         // This allows NavigationUI to decide what label to show in the action bar
         // By using appBarConfig, it will also determine whether to
@@ -79,9 +92,8 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         // Allows NavigationUI to support proper up navigation or the drawer layout
         // drawer menu, depending on the situation
-        return findNavController(R.id.navHostFrag).navigateUp(appBarConfiguration)
+        return findNavController(com.raiachat.R.id.navHostFrag).navigateUp(appBarConfiguration)
     }
-
 
 
     private fun makeTransparent() {
@@ -146,26 +158,26 @@ class MainActivity : AppCompatActivity() {
 
             primaryItem("Home") {
                 icon = com.raiachat.R.drawable.ic_home_grey
-                onClick(doNav(R.id.home_dest))
-                toolbar_title.text = "RaiaChat"
+                onClick(doNav(com.raiachat.R.id.home_dest))
+                setToolbarTitle("RaiaChat")
             }
 
             primaryItem("Profile") {
                 icon = com.raiachat.R.drawable.ic_person
-                onClick(doNav(R.id.profile_dest))
-                toolbar_title.text = "Profile"
+                onClick(doNav(com.raiachat.R.id.profile_dest))
+                setToolbarTitle("Profile")
             }
 
             primaryItem("Notification") {
                 icon = com.raiachat.R.drawable.ic_notification
                 onClick(openActivity(NotifActivity::class))
-                toolbar_title.text = "RaiaChat"
+                setToolbarTitle("RaiaChat")
             }
 
             primaryItem("Trending") {
                 icon = com.raiachat.R.drawable.ic_ratings
-                onClick(doNav(R.id.trending_dest))
-                toolbar_title.text = "Trending"
+                onClick(doNav(com.raiachat.R.id.trending_dest))
+                setToolbarTitle("Trending")
             }
 
             sectionHeader("Manage") {
@@ -174,20 +186,20 @@ class MainActivity : AppCompatActivity() {
 
             primaryItem("Settings") {
                 icon = com.raiachat.R.drawable.ic_settings
-                onClick(doNav(R.id.settings_dest))
-                toolbar_title.text = "Settings"
+                onClick(doNav(com.raiachat.R.id.settings_dest))
+                setToolbarTitle("Settings")
             }
 
             primaryItem("Help") {
                 icon = com.raiachat.R.drawable.ic_help
-                onClick(doNav(R.id.help_dest))
-                toolbar_title.text = "RaiaChat"
+                onClick(doNav(com.raiachat.R.id.help_dest))
+                setToolbarTitle("Help")
             }
 
             primaryItem("Contact") {
                 icon = com.raiachat.R.drawable.ic_phone
                 onClick(doToast("TODO: Contact"))
-                toolbar_title.text = "RaiaChat"
+                setToolbarTitle("Contact")
             }
 
             divider()
@@ -195,7 +207,7 @@ class MainActivity : AppCompatActivity() {
             primaryItem("Logout") {
                 icon = com.raiachat.R.drawable.ic_leave
                 onClick(doToast("TODO: Logout"))
-                toolbar_title.text = "RaiaChat"
+                setToolbarTitle("RaiaChat")
             }
 
 
@@ -207,14 +219,32 @@ class MainActivity : AppCompatActivity() {
         false
     }
 
-    private fun doNav(@IdRes int: Int): (View?) -> Boolean ={
+    public fun doNav(@IdRes int: Int): (View?) -> Boolean = {
         //Navigation.createNavigateOnClickListener(int, null)
-        findNavController(R.id.navHostFrag).navigate(int)
+        findNavController(com.raiachat.R.id.navHostFrag).navigate(int)
         false
     }
 
-    private fun <T : Activity> openActivity(activity: KClass<T>): (View?) -> Boolean = {
+    public fun <T : Activity> openActivity(activity: KClass<T>): (View?) -> Boolean = {
         startActivity(Intent(this@MainActivity, activity.java))
         false
+    }
+
+    private fun setToolbarTitle(title:String) {
+        //val mActionBarToolbar = findViewById<androidx.appcompat.widget.Toolbar?>(R.id.maintoolbar)
+        //setSupportActionBar(mActionBarToolbar)
+        setSupportActionBar(maintoolbar)
+        maintoolbar.title = ""
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        maintoolbar.title = null
+        maintoolbar!!.findViewById<TextView>(R.id.toolbar_title).text = title
+
+    }
+
+    private fun contactUs(){
+        val intent = Intent(Intent.ACTION_SENDTO)
+        intent.data = Uri.parse("mailto:")
+        intent.putExtra(Intent.EXTRA_EMAIL, arrayOf<String>("raiachat@gmail.com"))
+        setIntent(intent)
     }
 }
