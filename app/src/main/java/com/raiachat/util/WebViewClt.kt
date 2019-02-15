@@ -15,9 +15,9 @@ class WebViewClt internal constructor(private val activity: Activity) : WebViewC
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
-        val url: String = request?.url.toString();
+        val url: String = request?.url.toString()
 
-        if (url.contains("https://tutorialwing.com", false))
+        if (url.contains("http://jobgetabu.me", false))
             return false
 
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
@@ -26,7 +26,7 @@ class WebViewClt internal constructor(private val activity: Activity) : WebViewC
     }
 
     override fun shouldOverrideUrlLoading(webView: WebView, url: String): Boolean {
-        if (url.contains("https://tutorialwing.com"))
+        if (url.contains("http://jobgetabu.me"))
             return false
 
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))

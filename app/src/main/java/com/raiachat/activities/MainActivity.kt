@@ -1,5 +1,6 @@
 package com.raiachat.activities
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Build
@@ -25,7 +26,6 @@ import co.zsmb.materialdrawerkt.draweritems.sectionHeader
 import com.mikepenz.materialdrawer.AccountHeader
 import com.mikepenz.materialdrawer.Drawer
 import com.raiachat.R
-import com.raiachat.fragments.HomeFragment
 import com.raiachat.util.toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.reflect.KClass
@@ -49,8 +49,6 @@ class MainActivity : AppCompatActivity() {
 
         // Set up Action Bar
         val navController = host.navController
-
-        val homeFragment = HomeFragment()
 
         /*supportFragmentManager.inTransaction {
             add(com.raiachat.R.id.bodyContent, homeFragment)
@@ -122,6 +120,7 @@ class MainActivity : AppCompatActivity() {
             super.onBackPressed()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun initDrawer(savedInstanceState: Bundle?) {
         result = drawer {
             toolbar = maintoolbar
@@ -148,22 +147,25 @@ class MainActivity : AppCompatActivity() {
             primaryItem("Home") {
                 icon = com.raiachat.R.drawable.ic_home_grey
                 onClick(doNav(R.id.home_dest))
-
+                toolbar_title.text = "RaiaChat"
             }
 
             primaryItem("Profile") {
                 icon = com.raiachat.R.drawable.ic_person
                 onClick(doNav(R.id.profile_dest))
+                toolbar_title.text = "Profile"
             }
 
             primaryItem("Notification") {
                 icon = com.raiachat.R.drawable.ic_notification
                 onClick(openActivity(NotifActivity::class))
+                toolbar_title.text = "RaiaChat"
             }
 
             primaryItem("Trending") {
                 icon = com.raiachat.R.drawable.ic_ratings
                 onClick(doNav(R.id.trending_dest))
+                toolbar_title.text = "Trending"
             }
 
             sectionHeader("Manage") {
@@ -173,16 +175,19 @@ class MainActivity : AppCompatActivity() {
             primaryItem("Settings") {
                 icon = com.raiachat.R.drawable.ic_settings
                 onClick(doNav(R.id.settings_dest))
+                toolbar_title.text = "Settings"
             }
 
             primaryItem("Help") {
                 icon = com.raiachat.R.drawable.ic_help
                 onClick(doNav(R.id.help_dest))
+                toolbar_title.text = "RaiaChat"
             }
 
             primaryItem("Contact") {
                 icon = com.raiachat.R.drawable.ic_phone
                 onClick(doToast("TODO: Contact"))
+                toolbar_title.text = "RaiaChat"
             }
 
             divider()
@@ -190,6 +195,7 @@ class MainActivity : AppCompatActivity() {
             primaryItem("Logout") {
                 icon = com.raiachat.R.drawable.ic_leave
                 onClick(doToast("TODO: Logout"))
+                toolbar_title.text = "RaiaChat"
             }
 
 
