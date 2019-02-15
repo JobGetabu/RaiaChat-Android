@@ -5,6 +5,7 @@
     <color name="colorAccent">#0C756D</color>
 
     <color name="accentLight">#330C756D</color>
+    <color name="darkLight">#363636</color>
 
     <color name="milkWhite">#F9F9F9</color>
     <color name="contentDividerLine">#e0e0e0</color>
