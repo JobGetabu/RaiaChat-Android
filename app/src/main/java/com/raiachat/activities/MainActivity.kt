@@ -206,7 +206,7 @@ class MainActivity : AppCompatActivity() {
 
             primaryItem("Logout") {
                 icon = com.raiachat.R.drawable.ic_leave
-                onClick(doToast("TODO: Logout"))
+                onClick(openActivity(LoginActivity::class))
                 setToolbarTitle("RaiaChat")
             }
 
@@ -219,13 +219,13 @@ class MainActivity : AppCompatActivity() {
         false
     }
 
-    public fun doNav(@IdRes int: Int): (View?) -> Boolean = {
+    private fun doNav(@IdRes int: Int): (View?) -> Boolean = {
         //Navigation.createNavigateOnClickListener(int, null)
         findNavController(com.raiachat.R.id.navHostFrag).navigate(int)
         false
     }
 
-    public fun <T : Activity> openActivity(activity: KClass<T>): (View?) -> Boolean = {
+    private fun <T : Activity> openActivity(activity: KClass<T>): (View?) -> Boolean = {
         startActivity(Intent(this@MainActivity, activity.java))
         false
     }
