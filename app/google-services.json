@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "759933151957",
+    "firebase_url": "https://raiachat-254.firebaseio.com",
+    "project_id": "raiachat-254",
+    "storage_bucket": "raiachat-254.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:759933151957:android:f93b0c4f4d6ece76",
+        "android_client_info": {
+          "package_name": "com.raiachat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "759933151957-h0d2p9a3d3a6i43agh5c1b38cne8ehh8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.raiachat",
+            "certificate_hash": "08707c39ce53fa034d11722ba7cd4fd155e54ec8"
+          }
+        },
+        {
+          "client_id": "759933151957-89cikn9pftuhoi989a1t0435or4t5os1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKCuP_Zjf47Q7ThRY1P-AJlVTANvcI8eo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "759933151957-89cikn9pftuhoi989a1t0435or4t5os1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
