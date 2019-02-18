@@ -40,5 +40,14 @@
     <string name="date_util_prefix_almost">almost</string>
 
     <string name="date_util_suffix">ago</string>
+    <string name="login">Login</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="code">Code</string>
+    <string name="social_login">Social Login</string>
+    <string name="resend_code">Resend Code</string>
+
+    <string name="facebook_app_id">403019067173396</string>
+    <string name="fb_login_protocol_scheme">fb403019067173396</string>
+
 
 </resources>

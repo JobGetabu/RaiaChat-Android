@@ -25,6 +25,8 @@ import co.zsmb.materialdrawerkt.draweritems.badgeable.primaryItem
 import co.zsmb.materialdrawerkt.draweritems.divider
 import co.zsmb.materialdrawerkt.draweritems.profile.profile
 import co.zsmb.materialdrawerkt.draweritems.sectionHeader
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.mikepenz.materialdrawer.AccountHeader
 import com.mikepenz.materialdrawer.Drawer
 import com.raiachat.R
@@ -38,6 +40,16 @@ class MainActivity : AppCompatActivity() {
     private lateinit var result: Drawer
     private lateinit var headerResult: AccountHeader
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
+
+    override fun onStart() {
+        super.onStart()
+
+        if (auth.currentUser == null)
+            toLogin()
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +62,9 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
         maintoolbar.title = null
 
+        //firebase
+        auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
 
         val host: NavHostFragment = navHostFrag as NavHostFragment? ?: return
 
@@ -230,7 +245,7 @@ class MainActivity : AppCompatActivity() {
         false
     }
 
-    private fun setToolbarTitle(title:String) {
+    private fun setToolbarTitle(title: String) {
         //val mActionBarToolbar = findViewById<androidx.appcompat.widget.Toolbar?>(R.id.maintoolbar)
         //setSupportActionBar(mActionBarToolbar)
         setSupportActionBar(maintoolbar)
@@ -241,10 +256,16 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun contactUs(){
+    private fun contactUs() {
         val intent = Intent(Intent.ACTION_SENDTO)
         intent.data = Uri.parse("mailto:")
         intent.putExtra(Intent.EXTRA_EMAIL, arrayOf<String>("raiachat@gmail.com"))
         setIntent(intent)
+    }
+
+    private fun toLogin() {
+        val loginActivity = LoginActivity::class.java
+        startActivity(Intent(this@MainActivity, loginActivity))
+        finish()
     }
 }

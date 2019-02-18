@@ -113,6 +113,10 @@ dependencies {
     implementation 'com.hbb20:gthumb:1.3'
     //about page
     implementation 'com.github.medyo:android-about-page:1.2.4'
+    //phone-number authenticator
+    implementation 'io.michaelrocks:libphonenumber-android:8.9.5'
+    // FB SDK
+    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
 
     //Navigation
     implementation 'android.arch.navigation:navigation-fragment-ktx:' + navigationVersion
